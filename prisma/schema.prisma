@@ -1,0 +1,280 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  DONOR
+  RECIPIENT
+  ADMIN
+}
+
+enum VerificationStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+enum DonationStatus {
+  OFFERED
+  ACCEPTED
+  IN_TRANSIT
+  DELIVERED
+  CANCELLED
+}
+
+enum ItemCategory {
+  WHEELCHAIR
+  MOBILITY_AID
+  MEDICAL_SUPPLY
+  OTHER
+}
+
+enum Condition {
+  NEW
+  LIKE_NEW
+  GOOD
+  FAIR
+  NEEDS_REPAIR
+}
+
+model User {
+  id                String            @id @default(cuid())
+  email             String            @unique
+  passwordHash      String
+  role              UserRole
+  firstName         String
+  lastName          String
+  phone             String?
+  organizationName  String?
+  verificationStatus VerificationStatus @default(PENDING)
+  verifiedAt        DateTime?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  // Profile details
+  donorProfile      DonorProfile?
+  recipientProfile  RecipientProfile?
+
+  // Relations
+  donations         Donation[]
+  requests          Request[]
+  sentMessages      Message[]         @relation("Sender")
+  receivedMessages  Message[]         @relation("Recipient")
+  auditLogs         AuditLog[]
+  notifications     Notification[]
+
+  @@index([email])
+  @@index([role])
+}
+
+model DonorProfile {
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  address           String
+  city              String
+  state             String
+  zipCode           String
+  country           String   @default("USA")
+  latitude          Float?
+  longitude         Float?
+  pickupNotes       String?
+  dropOffNotes      String?
+  preferredContact  String?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model RecipientProfile {
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  address           String
+  city              String
+  state             String
+  zipCode           String
+  country           String   @default("USA")
+  latitude          Float?
+  longitude         Float?
+  deliveryInstructions String?
+  preferredItems    String[] // Array of preferred item categories
+  urgentNeeds       String?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Donation {
+  id                String          @id @default(cuid())
+  donorId           String
+  donor             User            @relation(fields: [donorId], references: [id], onDelete: Cascade)
+  
+  title             String
+  description       String
+  category          ItemCategory
+  condition         Condition
+  photos            String[]        // Array of photo URLs
+  
+  location          String
+  city              String
+  state             String
+  zipCode           String
+  latitude          Float?
+  longitude         Float?
+  
+  pickupAvailable   Boolean         @default(true)
+  dropOffAvailable  Boolean         @default(false)
+  pickupNotes       String?
+  dropOffNotes      String?
+  
+  status            DonationStatus  @default(OFFERED)
+  
+  // Matching
+  acceptedRequestId String?         @unique
+  acceptedRequest   Request?         @relation("AcceptedRequest", fields: [acceptedRequestId], references: [id])
+  
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  
+  // Relations
+  requests          Request[]        @relation("DonationRequests")
+  messages          Message[]
+  statusHistory     DonationStatusHistory[]
+  
+  @@index([donorId])
+  @@index([status])
+  @@index([category])
+  @@index([city, state])
+}
+
+model Request {
+  id                String          @id @default(cuid())
+  recipientId       String
+  recipient         User            @relation(fields: [recipientId], references: [id], onDelete: Cascade)
+  
+  donationId        String?
+  donation          Donation?       @relation("DonationRequests", fields: [donationId], references: [id], onDelete: SetNull)
+  
+  // Accepted request relation
+  acceptedDonation  Donation?       @relation("AcceptedRequest")
+  
+  title             String
+  description       String
+  category          ItemCategory?
+  urgency           String?         // HIGH, MEDIUM, LOW
+  
+  status            DonationStatus  @default(OFFERED)
+  
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  
+  // Relations
+  messages          Message[]
+  statusHistory     RequestStatusHistory[]
+  
+  @@index([recipientId])
+  @@index([status])
+  @@index([category])
+}
+
+model Message {
+  id                String   @id @default(cuid())
+  senderId          String
+  sender            User     @relation("Sender", fields: [senderId], references: [id], onDelete: Cascade)
+  
+  recipientId       String
+  recipient         User     @relation("Recipient", fields: [recipientId], references: [id], onDelete: Cascade)
+  
+  donationId        String?
+  donation          Donation? @relation(fields: [donationId], references: [id], onDelete: SetNull)
+  
+  requestId         String?
+  request           Request? @relation(fields: [requestId], references: [id], onDelete: SetNull)
+  
+  content           String
+  read              Boolean  @default(false)
+  readAt            DateTime?
+  
+  createdAt         DateTime @default(now())
+  
+  @@index([senderId, recipientId])
+  @@index([donationId])
+  @@index([requestId])
+}
+
+model DonationStatusHistory {
+  id                String          @id @default(cuid())
+  donationId        String
+  donation          Donation         @relation(fields: [donationId], references: [id], onDelete: Cascade)
+  
+  status            DonationStatus
+  notes             String?
+  changedBy         String?         // User ID who made the change
+  
+  createdAt         DateTime        @default(now())
+  
+  @@index([donationId])
+}
+
+model RequestStatusHistory {
+  id                String          @id @default(cuid())
+  requestId         String
+  request           Request         @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  
+  status            DonationStatus
+  notes             String?
+  changedBy         String?
+  
+  createdAt         DateTime        @default(now())
+  
+  @@index([requestId])
+}
+
+model AuditLog {
+  id                String   @id @default(cuid())
+  userId            String?
+  user              User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  
+  action            String   // e.g., "DONATION_CREATED", "STATUS_UPDATED"
+  entityType        String   // e.g., "DONATION", "REQUEST", "USER"
+  entityId          String?
+  details           Json?    // Additional details as JSON
+  
+  ipAddress         String?
+  userAgent         String?
+  
+  createdAt         DateTime @default(now())
+  
+  @@index([userId])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+}
+
+model Notification {
+  id                String   @id @default(cuid())
+  userId            String
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  type              String   // e.g., "NEW_REQUEST", "STATUS_UPDATE", "NEW_MESSAGE"
+  title             String
+  message           String
+  link              String?
+  read              Boolean  @default(false)
+  readAt            DateTime?
+  
+  createdAt         DateTime @default(now())
+  
+  @@index([userId, read])
+}
+
