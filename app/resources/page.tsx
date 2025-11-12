@@ -3,36 +3,36 @@ import { FiExternalLink, FiBook, FiVideo, FiFileText, FiUsers } from 'react-icon
 
 const resources = [
   {
-    category: 'Educational',
-    title: 'Understanding Spinal Cord Injuries',
-    description: 'Comprehensive guide to understanding spinal cord injuries, their causes, and impact.',
-    type: 'Article',
+    category: 'Clinical',
+    title: 'ISIC Patient & Caregiver Handbook',
+    description: 'Protocols from the Indian Spinal Injuries Centre covering rehab routines, pressure sore care, and nutrition.',
+    type: 'Guide',
     icon: FiBook,
-    link: '#',
+    link: 'https://www.isiconline.org/patients-caregivers/',
   },
   {
-    category: 'Support',
-    title: 'Support Groups Directory',
-    description: 'Find local and online support groups for individuals and families affected by SCI.',
+    category: 'Community',
+    title: 'Spinal Foundation Peer Circles',
+    description: 'Nationwide peer mentors and WhatsApp groups for families navigating SCI in English and Indian languages.',
     type: 'Directory',
     icon: FiUsers,
-    link: '#',
+    link: 'https://www.spinalfoundation.in/peer-support/',
   },
   {
-    category: 'Medical',
-    title: 'Medical Resources',
-    description: 'Information about medical care, rehabilitation, and treatment options.',
-    type: 'Resource',
+    category: 'Policy',
+    title: 'Department of Empowerment of PwDs Schemes',
+    description: 'Government programs, ADIP subsidies, and travel concessions for assistive devices across India.',
+    type: 'Portal',
     icon: FiFileText,
-    link: '#',
+    link: 'https://depwd.gov.in/',
   },
   {
-    category: 'Video',
-    title: 'Educational Videos',
-    description: 'Watch videos about living with SCI, adaptive equipment, and community stories.',
-    type: 'Video',
+    category: 'Global Standard',
+    title: 'WHO Wheelchair Service Training Package',
+    description: 'International guidelines that our partners follow for assessment, fitting, and follow-up care.',
+    type: 'Toolkit',
     icon: FiVideo,
-    link: '#',
+    link: 'https://www.who.int/publications/i/item/9789241547482',
   },
 ]
 
@@ -79,13 +79,13 @@ export default function ResourcesPage() {
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Additional Information</h2>
           <div className="prose max-w-none">
             <p className="text-gray-600 mb-4">
-              Spinal cord injuries can have a profound impact on individuals and their families.
-              Understanding the condition, available resources, and support networks is crucial
-              for navigating this journey.
+              Access to rehab knowledge and assistive devices is still uneven across Indian states.
+              Curated, trustworthy resources help caregivers advocate for subsidies, pick safe
+              equipment, and stay connected with professionals worldwide.
             </p>
             <p className="text-gray-600">
-              If you have resources you'd like to share or questions about spinal cord injuries,
-              please don't hesitate to reach out to our community.
+              Have a guide in Marathi, a webinar from Singapore, or policy news to share? Send it to
+              us so we can publish it for the wider community.
             </p>
           </div>
         </div>
@@ -93,4 +93,3 @@ export default function ResourcesPage() {
     </div>
   )
 }
-

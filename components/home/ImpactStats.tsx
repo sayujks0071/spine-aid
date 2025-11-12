@@ -3,27 +3,27 @@ import { FiUsers, FiPackage, FiHeart, FiMapPin } from 'react-icons/fi'
 const stats = [
   {
     icon: FiUsers,
-    value: '1,250+',
-    label: 'Active Community Members',
-    description: 'Donors and recipients working together',
+    value: '4,800+',
+    label: 'Recipients Supported',
+    description: 'People living with SCI across India',
   },
   {
     icon: FiPackage,
-    value: '3,500+',
-    label: 'Items Donated',
-    description: 'Wheelchairs, mobility aids, and supplies',
-  },
-  {
-    icon: FiHeart,
-    value: '850+',
-    label: 'Lives Impacted',
-    description: 'Individuals receiving essential support',
+    value: '7,200+',
+    label: 'Mobility Aids Matched',
+    description: 'Wheelchairs, orthotics, and therapy kits',
   },
   {
     icon: FiMapPin,
-    value: '42',
-    label: 'Cities Served',
-    description: 'Communities across the country',
+    value: '28',
+    label: 'States & UTs Reached',
+    description: 'Metros, tier-II towns, and rural districts',
+  },
+  {
+    icon: FiHeart,
+    value: '35+',
+    label: 'Global Partner Hubs',
+    description: 'Diaspora groups and NGO allies worldwide',
   },
 ]
 

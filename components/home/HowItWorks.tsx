@@ -3,27 +3,27 @@ import { FiUserPlus, FiSearch, FiMessageCircle, FiCheckCircle } from 'react-icon
 const steps = [
   {
     icon: FiUserPlus,
-    title: 'Join Our Community',
+    title: 'Create a Verified Profile',
     description:
-      'Sign up as a donor or recipient. Complete your profile verification to get started.',
+      'Sign up as a donor, recipient, or NGO partner with simple e-KYC or hospital references trusted across India.',
   },
   {
     icon: FiSearch,
-    title: 'Browse & Match',
+    title: 'Match Locally & Globally',
     description:
-      'Donors list available items with photos and details. Recipients browse and request what they need.',
+      'List or request mobility aids with regional filters, courier-ready packaging tips, and diaspora donation options.',
   },
   {
     icon: FiMessageCircle,
-    title: 'Coordinate Logistics',
+    title: 'Coordinate in Your Language',
     description:
-      'Use our messaging system to coordinate pickup, delivery, and handoff details.',
+      'Use WhatsApp, in-app chat, or email to align transport, translation, and custom clearance details.',
   },
   {
     icon: FiCheckCircle,
-    title: 'Complete Delivery',
+    title: 'Confirm Impact & Share Proof',
     description:
-      'Track status from offered to delivered. Get confirmation receipts for your donations.',
+      'Track each donation from pickup to delivery with digital receipts accepted by CSR teams worldwide.',
   },
 ]
 

@@ -6,38 +6,38 @@ import { FiChevronLeft, FiChevronRight, FiMessageSquare } from 'react-icons/fi'
 const stories = [
   {
     id: 1,
-    name: 'Sarah Johnson',
+    name: 'Ananya Rao',
     role: 'Recipient',
-    location: 'Chicago, IL',
+    location: 'Bengaluru, India',
     quote:
-      'Spine Aid connected me with a perfect wheelchair that gave me back my independence. The donor was so kind and the process was seamless.',
+      'Within a week of registering, I was matched to a lightweight wheelchair that fits narrow Bengaluru lanes. Knowing donors from across India care has rebuilt my confidence.',
     image: '/api/placeholder/150/150',
   },
   {
     id: 2,
-    name: 'Michael Chen',
-    role: 'Donor',
-    location: 'San Francisco, CA',
+    name: 'Karan Mehta',
+    role: 'Donor & CSR Lead',
+    location: 'Mumbai, India',
     quote:
-      'Donating my father\'s mobility equipment through Spine Aid was meaningful. Knowing it\'s helping someone in need makes it all worthwhile.',
+      'We redirect gently used therapy equipment from our clinics via Spine Aid. The platform verifies recipients and gives us CSR-ready documentation without extra overhead.',
     image: '/api/placeholder/150/150',
   },
   {
     id: 3,
-    name: 'Emma Rodriguez',
-    role: 'Recipient',
-    location: 'Miami, FL',
+    name: 'Dr. Leila Hassan',
+    role: 'Rehab Partner',
+    location: 'Dubai, UAE',
     quote:
-      'The medical supplies I received were exactly what I needed. This platform truly understands the community\'s needs and connects us with care.',
+      'Our Gulf-based community wanted to support Indian patients meaningfully. Spine Aid handles customs guidance and last-mile partners so overseas donations remain stress-free.',
     image: '/api/placeholder/150/150',
   },
   {
     id: 4,
-    name: 'David Thompson',
-    role: 'Donor',
-    location: 'Seattle, WA',
+    name: 'Maya Patel',
+    role: 'Diaspora Donor',
+    location: 'London, UK',
     quote:
-      'I\'ve donated multiple items through Spine Aid. The transparency and ease of coordination make it the best way to give back.',
+      'Sending adaptive devices from the UK to a hospital in Ahmedabad felt simple. Tracking updates and multilingual support made our family trust the process completely.',
     image: '/api/placeholder/150/150',
   },
 ]
@@ -142,4 +142,3 @@ export function StoriesCarousel() {
     </section>
   )
 }
-

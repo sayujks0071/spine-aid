@@ -10,27 +10,34 @@ export function Footer() {
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-white text-lg font-semibold mb-4">About Spine Aid</h3>
             <p className="text-sm mb-4">
-              Connecting communities to provide essential mobility aids and medical supplies
-              to those affected by spinal cord injuries. Together, we make a difference.
+              Spine Aid is an India-first, globally connected platform that channels mobility aids,
+              orthotics, and rehab supplies to people living with spinal cord injuries in every state.
+              We collaborate with hospitals, NGOs, and diaspora champions worldwide.
             </p>
             <div className="space-y-2 text-sm">
               <div className="flex items-center space-x-2">
                 <FiMail className="h-4 w-4" aria-hidden="true" />
                 <a
-                  href="mailto:info@spineaid.org"
+                  href="mailto:hello@spineaid.in"
                   className="hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 rounded"
                 >
-                  info@spineaid.org
+                  hello@spineaid.in
                 </a>
               </div>
               <div className="flex items-center space-x-2">
                 <FiPhone className="h-4 w-4" aria-hidden="true" />
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+918061337788"
                   className="hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 rounded"
                 >
-                  (123) 456-7890
+                  +91 80613 37788
                 </a>
+              </div>
+              <div className="flex items-center space-x-2">
+                <FiMapPin className="h-4 w-4" aria-hidden="true" />
+                <span>
+                  Bengaluru, India &middot; Global Operations Desk
+                </span>
               </div>
             </div>
           </div>
@@ -123,4 +130,3 @@ export function Footer() {
     </footer>
   )
 }
-

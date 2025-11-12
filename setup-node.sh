@@ -65,3 +65,4 @@ echo "   cd \"/Users/mac/CURSOR/Spine aid\""
 echo "   npm install"
 echo "   npm run dev"
 
+

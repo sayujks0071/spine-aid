@@ -112,3 +112,4 @@ See detailed installation instructions in:
 - `SETUP.md` - Application setup guide
 - `README.md` - Project overview
 
+

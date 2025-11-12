@@ -10,12 +10,12 @@ export function Hero() {
             <FiHeart className="h-16 w-16 text-primary-200" aria-hidden="true" />
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            Connecting Communities for
-            <span className="block text-primary-100">Spinal Cord Injury Support</span>
+            India&rsquo;s Spine Aid Network
+            <span className="block text-primary-100">Built for Bharat, Welcoming the World</span>
           </h1>
           <p className="text-xl sm:text-2xl text-primary-100 mb-8 max-w-3xl mx-auto">
-            Raising awareness and coordinating in-kind donations of wheelchairs, mobility aids,
-            and medical supplies. Together, we make a difference.
+            We coordinate wheelchairs, mobility aids, and rehab supplies across India while giving
+            global donors, hospitals, and diaspora families a trusted way to support every district.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

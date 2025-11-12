@@ -11,6 +11,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
     "@hookform/resolvers": "^3.3.2",
     "@prisma/client": "^5.7.1",
     "@types/multer": "^1.4.11",

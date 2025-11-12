@@ -110,3 +110,4 @@ If Homebrew doesn't work for you:
 5. Verify: `node --version` and `npm --version`
 6. Then proceed with `npm install` in the project directory
 
+

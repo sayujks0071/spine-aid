@@ -49,12 +49,12 @@ export function Navigation() {
 
   const authLinks = isAuthenticated
     ? [
-        { href: '/dashboard', label: 'Dashboard', icon: FiUser },
+        { href: '/dashboard', label: 'Dashboard', icon: FiUser, onClick: undefined },
         { href: '#', label: 'Logout', icon: FiLogOut, onClick: handleLogout },
       ]
     : [
-        { href: '/login', label: 'Login' },
-        { href: '/register', label: 'Sign Up' },
+        { href: '/login', label: 'Login', icon: undefined, onClick: undefined },
+        { href: '/register', label: 'Sign Up', icon: undefined, onClick: undefined },
       ]
 
   return (
@@ -165,4 +165,5 @@ export function Navigation() {
     </nav>
   )
 }
+
 

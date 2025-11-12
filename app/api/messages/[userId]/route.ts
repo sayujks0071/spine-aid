@@ -4,11 +4,11 @@ import { prisma } from '@/lib/prisma'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { userId: string } }
+  { params }: { params: Promise<{ userId: string }> }
 ) {
   try {
     const user = await requireAuth()(request)
-    const otherUserId = params.userId
+    const { userId: otherUserId } = await params
 
     const messages = await prisma.message.findMany({
       where: {
@@ -65,4 +65,5 @@ export async function GET(
     )
   }
 }
+
 

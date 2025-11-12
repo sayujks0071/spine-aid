@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { FiPackage, FiInbox, FiBell, FiPlus, FiArrowRight } from 'react-icons/fi'
+import { FiPackage, FiInbox, FiBell, FiPlus, FiArrowRight, FiFileText } from 'react-icons/fi'
 
 interface DashboardStats {
   activeDonations: number
@@ -183,6 +183,16 @@ export default function DashboardPage() {
                   <span className="font-medium text-gray-900">Complete Your Profile</span>
                   <FiArrowRight className="h-5 w-5 text-gray-400" />
                 </Link>
+                <Link
+                  href="/dashboard/documents"
+                  className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:border-primary-500 hover:bg-primary-50 transition-colors"
+                >
+                  <div className="flex items-center">
+                    <FiFileText className="h-5 w-5 text-primary-600 mr-3" />
+                    <span className="font-medium text-gray-900">Document Library</span>
+                  </div>
+                  <FiArrowRight className="h-5 w-5 text-gray-400" />
+                </Link>
               </div>
             </div>
           )}
@@ -208,6 +218,16 @@ export default function DashboardPage() {
                   <span className="font-medium text-gray-900">Browse Available Items</span>
                   <FiArrowRight className="h-5 w-5 text-gray-400" />
                 </Link>
+                <Link
+                  href="/dashboard/documents"
+                  className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:border-primary-500 hover:bg-primary-50 transition-colors"
+                >
+                  <div className="flex items-center">
+                    <FiFileText className="h-5 w-5 text-primary-600 mr-3" />
+                    <span className="font-medium text-gray-900">Document Library</span>
+                  </div>
+                  <FiArrowRight className="h-5 w-5 text-gray-400" />
+                </Link>
               </div>
             </div>
           )}
@@ -224,4 +244,5 @@ export default function DashboardPage() {
     </div>
   )
 }
+
 
